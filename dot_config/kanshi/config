@@ -1,0 +1,7 @@
+profile docked {
+    output HDMI-A-1 mode 2560x1440 enable
+    output eDP-1 disable
+}
+profile undocked {
+    output eDP-1 enable
+}
