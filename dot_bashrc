@@ -13,6 +13,7 @@ source ~/.local/share/omarchy/default/bash/rc
 alias bw="bunx bun-workspaces"
 alias oc="opencode"
 alias brd="bun run dev"
+alias hx="helix"
 
 # opencode
 export PATH=/home/sepagian/.opencode/bin:$PATH

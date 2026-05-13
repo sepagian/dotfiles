@@ -16,8 +16,8 @@ string match -q "$TERM_PROGRAM" kiro and . (kiro --locate-shell-integration-path
 export PATH="/home/sepagian/.local/bin:$PATH"
 set -gx PATH $PATH ~/.config/yazi
 
-set -gx EDITOR hx
-set -gx VISUAL hx
+set -gx EDITOR helix
+set -gx VISUAL helix
 
 # opencode
 fish_add_path /home/sepagian/.opencode/bin
