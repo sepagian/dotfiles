@@ -1,0 +1,134 @@
+[language-server.astro-ls]
+command = "astro-ls"
+args = ["--stdio"]
+config = { typescript = { tsdk = "/Users/user/.bun/install/global/node_modules/typescript/lib" }, environment = "node" }
+
+[language-server.emmet-ls]
+command = "/home/sepagian/.cache/.bun/bin/emmet-ls"
+args = ["--stdio"]
+
+[language-server.typescript-language-server]
+command = "/home/sepagian/.cache/.bun/bin/typescript-language-server"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+[language-server.vscode-html-language-server]
+command = "/home/sepagian/.cache/.bun/bin/vscode-html-language-server"
+args = ["--stdio"]
+
+[language-server.vscode-css-language-server]
+command = "/home/sepagian/.cache/.bun/bin/vscode-css-language-server"
+args = ["--stdio"]
+
+[language-server.svelteserver]
+command = "/home/sepagian/.cache/.bun/bin/svelteserver"
+args = ["--stdio"]
+
+[language-server.biome-lsp-proxy]
+command = "biome"
+args = ["lsp-proxy"]
+
+[language-server.tailwindcss-ls]
+command = "/home/sepagian/.cache/.bun/bin/tailwindcss-language-server"
+args = ["--stdio"]
+
+[language-server.taplo]
+command = "taplo"
+args = ["lsp", "stdio"]
+
+[language-server.vscode-json-language-server]
+command = "/home/sepagian/.cache/.bun/bin/vscode-json-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "astro"
+scope = "source.astro"
+file-types = ["astro"]
+auto-format = true
+language-servers = ["astro-ls"]
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+file-types = ["js", "mjs", "cjs"]
+auto-format = true
+formatter = { command = "/home/sepagian/.cache/.bun/bin/biome", args = ["format", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["biome-lsp-proxy", "typescript-language-server", "emmet-ls"]
+
+[[language]]
+name = "javascript.jsx"
+scope = "source.js.jsx"
+file-types = ["jsx"]
+auto-format = true
+formatter = { command = "/home/sepagian/.cache/.bun/bin/biome", args = ["format", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["biome-lsp-proxy", "tailwindcss-ls", "typescript-language-server"]
+
+[[language]]
+name = "typescript"
+scope = "source.ts"
+file-types = ["ts", "mts", "cts"]
+auto-format = true
+formatter = { command = "/home/sepagian/.cache/.bun/bin/biome", args = ["format", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["biome-lsp-proxy", "typescript-language-server"]
+
+[[language]]
+name = "typescript.tsx"
+scope = "source.tsx"
+file-types = ["tsx"]
+auto-format = true
+formatter = { command = "/home/sepagian/.cache/.bun/bin/biome", args = ["format", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["biome-lsp-proxy", "tailwindcss-ls", "typescript-language-server"]
+
+[[language]]
+name = "html"
+scope = "source.html"
+file-types = ["html", "htm"]
+auto-format = true
+formatter = { command = "/home/sepagian/.cache/.bun/bin/biome", args = ["format", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["tailwindcss-ls", "vscode-html-language-server"]
+
+[[language]]
+name = "css"
+scope = "source.css"
+file-types = ["css"]
+auto-format = true
+formatter = { command = "/home/sepagian/.cache/.bun/bin/biome", args = ["format", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["tailwindcss-ls", "vscode-css-language-server"]
+
+[[language]]
+name = "scss"
+scope = "source.scss"
+file-types = ["scss"]
+auto-format = true
+formatter = { command = "/home/sepagian/.cache/.bun/bin/biome", args = ["format", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["tailwindcss-ls", "vscode-css-language-server"]
+
+[[language]]
+name = "svelte"
+scope = "source.svelte"
+file-types = ["svelte"]
+auto-format = true
+formatter = { command = "/home/sepagian/.cache/.bun/bin/biome", args = ["format", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["biome-lsp-proxy", "tailwindcss-ls", "svelteserver", "typescript-language-server"]
+
+[[language]]
+name = "json"
+scope = "source.json"
+file-types = ["json"]
+auto-format = true
+formatter = { command = "/home/sepagian/.cache/.bun/bin/biome", args = ["format", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["biome-lsp-proxy", "vscode-json-language-server"]
+
+[[language]]
+name = "toml"
+scope = "source.toml"
+file-types = ["toml"]
+auto-format = true
+formatter = { command = "taplo", args = ["format", "-", "--stdin-file-path", "%{buffer_name}"] }
+language-servers = ["taplo"]
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+file-types = ["rs"]
+auto-format = true

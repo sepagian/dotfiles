@@ -1,0 +1,79 @@
+theme = "rose_pine"
+
+[editor]
+line-number = "relative"
+cursorline = true
+color-modes = true
+true-color = true
+mouse = false
+bufferline = "always"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+diagnostics = ["warning", "error"]
+workspace-diagnostics = ["warning", "error"]
+
+[keys.normal]
+# Config
+C-o = ":config-open"
+C-r = ":config-reload"
+C-s = [":fmt", ":w"]
+
+# Helix special
+C-h = "select_prev_sibling"
+C-l = "select_next_sibling"
+C-j = "shrink_selection"
+C-k = "expand_selection"
+
+# MoveIt
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
+o = ["open_below", "insert_mode"]
+O = ["open_above", "insert_mode"]
+
+# Yazi
+space.e = [
+  ':sh rm -f /tmp/unique-file',
+  ":insert-output yazi --chooser-file=/tmp/unique-file",
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
+
+space.E = ["file_explorer"]
+
+# Buffer
+#
+space.b = { "c" = ":buffer-close", "l" = "buffer_picker", "n" = ":buffer-next", "p" = ":buffer-previous"}
+S-l = ":buffer-next"
+S-h = ":buffer-previous"
+
+space.q = ":quit"
+
+[keys.insert]
+# Escape the madness! No more fighting with the cursor! Or with multiple cursors!
+esc = ["collapse_selection", "normal_mode"]
+C-s = [":fmt", ":w", "normal_mode"]
+
+[keys.select]
+# Visual-mode specific muscle memory
+i = "select_textobject_inner"
+a = "select_textobject_around"
